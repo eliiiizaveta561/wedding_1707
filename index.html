@@ -492,7 +492,7 @@
                     <div class="ticket-header">
                         <div class="festival-name">ПЕРСОНАЛЬНЫЙ БИЛЕТ</div>
                         <div class="main-title">НА ГЛАВНУЮ ПРЕМЬЕРУ</div>
-                        <div class="couple-names" id="coupleNames">Алексей и Алина</div>
+                        <div class="couple-names" id="coupleNames">Алина и Иван</div>
                     </div>
 
                     <div class="invite-text">
@@ -503,11 +503,11 @@
 
                     <div class="schedule-grid">
                         <div class="schedule-item">
-                            <div class="schedule-time">СУББОТА</div>
-                            <div class="schedule-event" id="weddingDate">12 января 2027</div>
+                            <div class="schedule-time">ПЯТНИЦА</div>
+                            <div class="schedule-event" id="weddingDate">17 июля 2026</div>
                         </div>
                         <div class="schedule-item">
-                            <div class="schedule-time">12:00</div>
+                            <div class="schedule-time">11:30</div>
                             <div class="schedule-event">Торжественная регистрация</div>
                         </div>
                         <div class="schedule-item">
@@ -517,8 +517,8 @@
                     </div>
 
                     <div class="venue">
-                        <div class="venue-name" id="restaurantName">Ресторан La Belle Époque</div>
-                        <div class="venue-address" id="restaurantAddress">Санкт-Петербург, Невский проспект, 45</div>
+                        <div class="venue-name" id="restaurantName">Ресторан "Строгинская гавань"</div>
+                        <div class="venue-address" id="restaurantAddress">Москва, Строгинский бульвар 21</div>
                     </div>
 
                     <div class="mood-text">
@@ -541,7 +541,7 @@
 
                     <div class="signature" id="signatureBlock">
                         С любовью и трепетом,<br>
-                        Алексей и Алина
+                        Алина и Иван
                     </div>
                 </div>
 
@@ -558,17 +558,17 @@
 
 <script>
     const CONFIG = {
-        couple: "Дмитрий и Екатерина",
-        date: "12 января 2027",
-        restaurant: "Ресторан «Золотой век»",
-        address: "Москва, улица Цветочная, 12"
+        couple: "Всё начинается с любви",
+        date: "17.07.2026",
+        restaurant: "Ресторан «Строгинская гавань»",
+        address: "Москва, Строгинский бульвар 21"
     };
 
     document.getElementById('coupleNames').innerText = CONFIG.couple;
     document.getElementById('weddingDate').innerText = CONFIG.date;
     document.getElementById('restaurantName').innerText = CONFIG.restaurant;
     document.getElementById('restaurantAddress').innerText = CONFIG.address;
-    document.getElementById('signatureBlock').innerHTML = `С любовью и трепетом,<br>${CONFIG.couple}`;
+    document.getElementById('signatureBlock').innerHTML = `С любовью и трепетом,<br>Алина и Иван`;
 
     function getGuestName() {
         const urlParams = new URLSearchParams(window.location.search);
