@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>Свадебное приглашение | Наша премьера</title>
     <style>
         * {
@@ -14,7 +14,7 @@
         body {
             min-height: 100vh;
             background: linear-gradient(145deg, #f5ede0 0%, #e8ddce 100%);
-            font-family: 'Georgia', 'Times New Roman', 'Inter', serif;
+            font-family: 'Georgia', 'Times New Roman', 'Palatino', 'Book Antiqua', serif;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -26,21 +26,17 @@
         .envelope-wrapper {
             position: relative;
             z-index: 20;
-            max-width: 550px;
-            width: 90%;
+            max-width: 480px;
+            width: 100%;
             cursor: pointer;
             transition: transform 0.3s ease, opacity 0.4s ease;
-        }
-
-        .envelope-wrapper:hover {
-            transform: translateY(-5px);
         }
 
         .envelope {
             position: relative;
             background: #fef8ed;
-            border-radius: 8px;
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
 
@@ -48,9 +44,9 @@
             position: relative;
             width: 100%;
             height: 0;
-            padding-bottom: 30%;
+            padding-bottom: 28%;
             background: #fef8ed;
-            clip-path: polygon(0% 0%, 50% 60%, 100% 0%);
+            clip-path: polygon(0% 0%, 50% 55%, 100% 0%);
             border-bottom: 1px solid #e8d5b5;
         }
 
@@ -62,7 +58,7 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(135deg, #fff5e8, #f5e8d8);
-            clip-path: polygon(0% 0%, 50% 60%, 100% 0%);
+            clip-path: polygon(0% 0%, 50% 55%, 100% 0%);
         }
 
         .envelope-seal {
@@ -79,14 +75,14 @@
             justify-content: center;
             font-size: 18px;
             color: #fef8ed;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
             z-index: 5;
             border: 2px solid #fef8ed;
         }
 
         .envelope-body {
             background: #fef8ed;
-            padding: 30px 25px 30px;
+            padding: 24px 16px 28px;
             text-align: center;
             border: 1px solid #e8d5b5;
             border-top: none;
@@ -100,36 +96,37 @@
             margin-bottom: 10px;
         }
 
-        .envelope-body .title {
-            font-size: 20px;
+        .envelope-body .main-message {
+            font-size: 18px;
             font-weight: 400;
-            color: #7a5a3a;
+            color: #6b3e1c;
             margin-bottom: 8px;
+            font-style: italic;
         }
 
         .envelope-body .divider {
-            width: 50px;
+            width: 40px;
             height: 1px;
             background: #d4af37;
-            margin: 15px auto;
+            margin: 14px auto;
         }
 
         .envelope-body .hint {
             font-size: 11px;
             color: #b89a70;
             font-style: italic;
-            margin-top: 15px;
+            margin-top: 14px;
         }
 
-        /* БИЛЕТ */
+        /* БИЛЕТ — ГЛАВНЫЙ КОНТЕЙНЕР */
         .ticket-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(4px);
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(6px);
             z-index: 100;
             display: flex;
             align-items: center;
@@ -137,7 +134,6 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.4s ease, visibility 0.4s;
-            padding: 15px;
         }
 
         .ticket-container.active {
@@ -145,45 +141,24 @@
             visibility: visible;
         }
 
+        /* Билет и кнопка вместе центрируются */
+        .ticket-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 850px;
+            margin: 20px;
+        }
+
         .ticket {
             background: #fffef7;
-            max-width: 900px;
             width: 100%;
-            max-height: 95vh;
-            overflow-y: auto;
             position: relative;
             box-shadow: 0 25px 40px rgba(0, 0, 0, 0.3);
-            transform: scale(0.9);
-            transition: transform 0.5s cubic-bezier(0.2, 1.1, 0.4, 1);
             overflow: hidden;
-            border-radius: 18px;
-        }
-
-        .ticket-container.active .ticket {
-            transform: scale(1);
-        }
-
-        /* Вырезы по бокам */
-        .ticket::before,
-        .ticket::after {
-            content: '';
-            position: absolute;
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(145deg, #f5ede0 0%, #e8ddce 100%);
-            border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 5;
-            box-shadow: 0 0 0 3px #fffef7;
-        }
-
-        .ticket::before {
-            left: -16px;
-        }
-
-        .ticket::after {
-            right: -16px;
+            border-radius: 16px;
         }
 
         .ticket-inner {
@@ -191,14 +166,13 @@
             flex-wrap: wrap;
             background: linear-gradient(135deg, #fffef7 0%, #fffaf0 100%);
             border: 1px solid #eeddbb;
-            border-radius: 14px;
-            margin: 6px;
+            border-radius: 16px;
         }
 
         .ticket-info {
             flex: 2;
-            padding: 18px 20px 18px 25px;
-            min-width: 240px;
+            padding: 22px 24px;
+            min-width: 250px;
         }
 
         .ticket-photo {
@@ -207,9 +181,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px 18px;
-            border-radius: 0 14px 14px 0;
-            min-width: 170px;
+            padding: 22px 18px;
+            border-radius: 0 16px 16px 0;
+            min-width: 180px;
         }
 
         .photo-frame {
@@ -227,8 +201,8 @@
         }
 
         .photo-frame::before {
-            top: -10px;
-            left: -10px;
+            top: -8px;
+            left: -8px;
             border-top: 2px solid #d4af37;
             border-left: 2px solid #d4af37;
             background: transparent;
@@ -237,8 +211,8 @@
         }
 
         .photo-frame::after {
-            bottom: -10px;
-            right: -10px;
+            bottom: -8px;
+            right: -8px;
             border-bottom: 2px solid #d4af37;
             border-right: 2px solid #d4af37;
             background: transparent;
@@ -251,46 +225,49 @@
             aspect-ratio: 4 / 5;
             object-fit: cover;
             border-radius: 10px;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
             border: 2px solid #d4af37;
             display: block;
         }
 
-        /* УМЕНЬШЕННЫЕ ТЕКСТЫ */
         .ticket-header {
             text-align: center;
             border-bottom: 1px solid #e8d8b8;
-            padding-bottom: 12px;
-            margin-bottom: 15px;
+            padding-bottom: 14px;
+            margin-bottom: 16px;
         }
 
         .festival-name {
-            font-size: 9px;
-            letter-spacing: 3px;
-            color: #c4a26a;
+            font-size: 12px;
+            letter-spacing: 4px;
+            color: #b8860b;
             text-transform: uppercase;
+            font-family: 'Georgia', serif;
         }
 
         .main-title {
-            font-size: 16px;
-            font-weight: 300;
+            font-size: 18px;
+            font-weight: 400;
             color: #b8860b;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            font-family: 'Georgia', serif;
+            margin-top: 4px;
         }
 
         .couple-names {
-            font-size: 22px;
+            font-size: 26px;
             font-weight: 600;
             color: #6b3e1c;
-            margin: 8px 0 3px;
+            margin: 10px 0 4px;
+            font-family: 'Georgia', 'Times New Roman', serif;
         }
 
         .invite-text {
             text-align: center;
-            font-size: 13px;
+            font-size: 14px;
             line-height: 1.4;
             color: #4a3520;
-            margin: 12px 0;
+            margin: 14px 0;
             font-style: italic;
         }
 
@@ -299,11 +276,11 @@
             font-size: 16px;
             font-weight: 500;
             color: #b8860b;
-            margin: 10px auto;
+            margin: 12px auto;
             background: #fff5e8;
             display: inline-block;
-            padding: 5px 18px;
-            border-radius: 30px;
+            padding: 5px 20px;
+            border-radius: 40px;
             width: auto;
             left: 50%;
             position: relative;
@@ -322,7 +299,7 @@
             flex: 1;
             text-align: center;
             border-left: 1px solid #e8d8b8;
-            padding-left: 8px;
+            padding-left: 10px;
         }
 
         .schedule-item:first-child {
@@ -338,7 +315,7 @@
         }
 
         .schedule-event {
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 500;
             color: #3a2a1a;
         }
@@ -346,13 +323,13 @@
         .venue {
             text-align: center;
             background: #faf5ea;
-            padding: 10px;
-            border-radius: 12px;
-            margin: 14px 0;
+            padding: 12px;
+            border-radius: 14px;
+            margin: 16px 0;
         }
 
         .venue-name {
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
             color: #6b3e1c;
         }
@@ -360,12 +337,12 @@
         .venue-address {
             font-size: 11px;
             color: #8a6a42;
-            margin-top: 3px;
+            margin-top: 4px;
         }
 
         .mood-text {
             text-align: center;
-            font-size: 11px;
+            font-size: 12px;
             line-height: 1.45;
             color: #5a4630;
             margin: 14px 0;
@@ -379,7 +356,7 @@
         }
 
         .dresscode-title {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 600;
             color: #b8860b;
             text-align: center;
@@ -404,57 +381,88 @@
             margin-top: 16px;
             padding-top: 12px;
             border-top: 1px solid #e8d8b8;
-            font-size: 12px;
+            font-size: 13px;
             color: #8a6a42;
+            font-style: italic;
         }
 
         .close-ticket {
             text-align: center;
-            margin-top: 12px;
-            font-size: 11px;
+            margin-top: 20px;
+            font-size: 12px;
             color: rgba(255,255,240,0.8);
             cursor: pointer;
+            transition: 0.2s;
+            padding: 6px 24px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 40px;
+            display: inline-block;
+            width: auto;
         }
 
         .close-ticket:hover {
             color: #d4af37;
+            background: rgba(0,0,0,0.4);
         }
 
-        @media (max-width: 650px) {
+        /* ТЕЛЕФОН */
+        @media (max-width: 850px) {
+            .ticket-container {
+                padding: 0;
+                overflow-y: auto;
+                align-items: flex-start;
+            }
+
+            .ticket-wrapper {
+                margin: 30px 16px;
+            }
+
             .ticket-inner {
                 flex-direction: column;
             }
+
             .ticket-photo {
-                border-radius: 0 0 14px 14px;
+                border-radius: 0 0 16px 16px;
                 order: -1;
-                padding: 15px;
+                padding: 18px;
             }
+
             .photo-frame {
                 max-width: 150px;
                 margin: 0 auto;
             }
+
+            .ticket-info {
+                padding: 18px;
+            }
+
             .schedule-grid {
                 flex-direction: column;
-                gap: 8px;
+                gap: 10px;
             }
+
             .schedule-item {
                 border-left: none;
                 border-top: 1px solid #e8d8b8;
-                padding-top: 6px;
+                padding-top: 8px;
                 padding-left: 0;
             }
+
             .schedule-item:first-child {
                 border-top: none;
+                padding-top: 0;
             }
+
             .couple-names {
-                font-size: 20px;
+                font-size: 24px;
             }
-            .ticket-info {
-                padding: 15px;
+
+            .main-title {
+                font-size: 16px;
             }
-            .guest-line {
-                font-size: 14px;
-                padding: 4px 14px;
+
+            .festival-name {
+                font-size: 11px;
             }
         }
     </style>
@@ -468,7 +476,7 @@
         <div class="envelope-seal">✧</div>
         <div class="envelope-body">
             <div class="greeting">ИМЕЕТ ЧЕСТЬ ПРИГЛАСИТЬ</div>
-            <div class="title">Свадебное торжество</div>
+            <div class="main-message">Рады разделить с вами важные моменты</div>
             <div class="divider"></div>
             <div class="hint">нажмите, чтобы открыть конверт</div>
         </div>
@@ -477,93 +485,91 @@
 
 <!-- БИЛЕТ -->
 <div class="ticket-container" id="ticketContainer">
-    <div class="ticket">
-        <div class="ticket-inner">
-            <div class="ticket-info">
-                <div class="ticket-header">
-                    <div class="festival-name">ПЕРСОНАЛЬНЫЙ БИЛЕТ</div>
-                    <div class="main-title">ПРЕМЬЕРА ГЛАВНОГО ФИЛЬМА</div>
-                    <div class="couple-names" id="coupleNames">Алексей и Алина</div>
-                </div>
-
-                <div class="invite-text">
-                    Рады разделить с вами важные моменты.<br>
-                    Ждем вас на нашей свадьбе.
-                </div>
-
-                <div id="guestName" class="guest-line"></div>
-
-                <div class="schedule-grid">
-                    <div class="schedule-item">
-                        <div class="schedule-time">СУББОТА</div>
-                        <div class="schedule-event" id="weddingDate">12 января 2027</div>
+    <div class="ticket-wrapper">
+        <div class="ticket">
+            <div class="ticket-inner">
+                <div class="ticket-info">
+                    <div class="ticket-header">
+                        <div class="festival-name">ПЕРСОНАЛЬНЫЙ БИЛЕТ</div>
+                        <div class="main-title">НА ГЛАВНУЮ ПРЕМЬЕРУ</div>
+                        <div class="couple-names" id="coupleNames">Алексей и Алина</div>
                     </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">12:00</div>
-                        <div class="schedule-event">Торжественная регистрация</div>
+
+                    <div class="invite-text">
+                        Ждем вас на нашей свадьбе.
                     </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">17:00</div>
-                        <div class="schedule-event">Праздничный банкет</div>
+
+                    <div id="guestName" class="guest-line"></div>
+
+                    <div class="schedule-grid">
+                        <div class="schedule-item">
+                            <div class="schedule-time">СУББОТА</div>
+                            <div class="schedule-event" id="weddingDate">12 января 2027</div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">12:00</div>
+                            <div class="schedule-event">Торжественная регистрация</div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">17:00</div>
+                            <div class="schedule-event">Праздничный банкет</div>
+                        </div>
+                    </div>
+
+                    <div class="venue">
+                        <div class="venue-name" id="restaurantName">Ресторан La Belle Époque</div>
+                        <div class="venue-address" id="restaurantAddress">Санкт-Петербург, Невский проспект, 45</div>
+                    </div>
+
+                    <div class="mood-text">
+                        Вы станете не просто гостями торжества, а звездами на нашем личном кинофестивале. 
+                        Изысканные блюда, чарующая музыка и атмосфера, пропитанная искренней любовью – все это для вас. 
+                        Добро пожаловать на премьеру нашей истории любви. Мы верим, что она вдохновит на чудеса, 
+                        мечты и исполнение самых сокровенных желаний.
+                    </div>
+
+                    <div class="dresscode">
+                        <div class="dresscode-title">ПОЖЕЛАНИЯ К ДРЕСС-КОДУ</div>
+                        <div class="dresscode-items">
+                            <div>Дамы: вечерние или коктейльные платья</div>
+                            <div>Кавалеры: костюмы либо брюки с рубашкой</div>
+                        </div>
+                        <div style="text-align: center; font-size: 10px; margin-top: 8px; color: #8a6a42;">
+                            Для поддержания торжественной и элегантной атмосферы
+                        </div>
+                    </div>
+
+                    <div class="signature" id="signatureBlock">
+                        С любовью и трепетом,<br>
+                        Алексей и Алина
                     </div>
                 </div>
 
-                <div class="venue">
-                    <div class="venue-name" id="restaurantName">Ресторан La Belle Époque</div>
-                    <div class="venue-address" id="restaurantAddress">Санкт-Петербург, Невский проспект, 45</div>
-                </div>
-
-                <div class="mood-text">
-                    Вы станете не просто гостями торжества, а звездами на нашем личном кинофестивале. 
-                    Изысканные блюда, чарующая музыка и атмосфера, пропитанная искренней любовью – все это для вас. 
-                    Добро пожаловать на премьеру нашей истории любви. Мы верим, что она вдохновит на чудеса, 
-                    мечты и исполнение самых сокровенных желаний.
-                </div>
-
-                <div class="dresscode">
-                    <div class="dresscode-title">ПОЖЕЛАНИЯ К ДРЕСС-КОДУ</div>
-                    <div class="dresscode-items">
-                        <div>Дамы: вечерние или коктейльные платья</div>
-                        <div>Кавалеры: костюмы либо брюки с рубашкой</div>
+                <div class="ticket-photo">
+                    <div class="photo-frame">
+                        <img class="couple-photo" id="couplePhoto" src="photo.jpg" alt="Фото молодоженов">
                     </div>
-                    <div style="text-align: center; font-size: 10px; margin-top: 8px; color: #8a6a42;">
-                        Для поддержания торжественной и элегантной атмосферы
-                    </div>
-                </div>
-
-                <div class="signature" id="signatureBlock">
-                    С любовью и трепетом,<br>
-                    Алексей и Алина
-                </div>
-            </div>
-
-            <div class="ticket-photo">
-                <div class="photo-frame">
-                    <img class="couple-photo" id="couplePhoto" src="photo.jpg" alt="Фото молодоженов">
                 </div>
             </div>
         </div>
+        <div class="close-ticket" id="closeTicketBtn">закрыть билет</div>
     </div>
-    <div class="close-ticket" id="closeTicketBtn">закрыть</div>
 </div>
 
 <script>
-    // ======================= НАСТРОЙКИ (ВПИШИТЕ СВОИ ДАННЫЕ) =======================
     const CONFIG = {
-        couple: "Всё начинается с любви",
+        couple: "Дмитрий и Екатерина",
         date: "12 января 2027",
         restaurant: "Ресторан «Золотой век»",
         address: "Москва, улица Цветочная, 12"
     };
-    // ========================================================================
 
     document.getElementById('coupleNames').innerText = CONFIG.couple;
     document.getElementById('weddingDate').innerText = CONFIG.date;
     document.getElementById('restaurantName').innerText = CONFIG.restaurant;
     document.getElementById('restaurantAddress').innerText = CONFIG.address;
-    document.getElementById('signatureBlock').innerHTML = `С любовью и трепетом,<br>Алина и Иван`;
+    document.getElementById('signatureBlock').innerHTML = `С любовью и трепетом,<br>${CONFIG.couple}`;
 
-    // Читаем имя гостя из ссылки
     function getGuestName() {
         const urlParams = new URLSearchParams(window.location.search);
         let name = urlParams.get('guest');
@@ -576,32 +582,26 @@
 
     const guestName = getGuestName();
     const guestNameElement = document.getElementById('guestName');
-    if (guestName) {
-        guestNameElement.innerHTML = guestName;
-    } else {
-        guestNameElement.innerHTML = "Дорогие гости";
-    }
+    guestNameElement.innerHTML = guestName ? guestName : "Дорогие гости";
 
-    // Фото
     const photo = document.getElementById('couplePhoto');
     photo.onerror = function() {
         this.style.display = 'none';
         const errorDiv = document.createElement('div');
-        errorDiv.style.cssText = 'background:#2c241a; border-radius:10px; padding:25px 15px; text-align:center; color:#d4af37; border:2px dashed #d4af37; font-size:12px;';
+        errorDiv.style.cssText = 'background:#2c241a; border-radius:10px; padding:25px 12px; text-align:center; color:#d4af37; border:2px dashed #d4af37; font-size:12px;';
         errorDiv.innerHTML = 'ФОТО<br><span style="font-size:10px;">поместите photo.jpg в ту же папку</span>';
         this.parentNode.appendChild(errorDiv);
     };
 
-    // Анимация
-    const envelopeEl = document.getElementById('envelope');
+    const envelope = document.getElementById('envelope');
     const ticketContainer = document.getElementById('ticketContainer');
     const closeBtn = document.getElementById('closeTicketBtn');
 
     function openEnvelope() {
-        envelopeEl.style.opacity = '0';
-        envelopeEl.style.transform = 'scale(0.95)';
+        envelope.style.opacity = '0';
+        envelope.style.transform = 'scale(0.95)';
         setTimeout(() => {
-            envelopeEl.style.display = 'none';
+            envelope.style.display = 'none';
             ticketContainer.classList.add('active');
         }, 400);
     }
@@ -609,17 +609,17 @@
     function closeTicket() {
         ticketContainer.classList.remove('active');
         setTimeout(() => {
-            envelopeEl.style.display = 'block';
+            envelope.style.display = 'block';
             setTimeout(() => {
-                envelopeEl.style.opacity = '1';
-                envelopeEl.style.transform = 'scale(1)';
+                envelope.style.opacity = '1';
+                envelope.style.transform = 'scale(1)';
             }, 50);
         }, 300);
     }
 
-    envelopeEl.addEventListener('click', openEnvelope);
+    envelope.addEventListener('click', openEnvelope);
     closeBtn.addEventListener('click', closeTicket);
-    ticketContainer.addEventListener('click', function(e) {
+    ticketContainer.addEventListener('click', (e) => {
         if (e.target === ticketContainer) closeTicket();
     });
 </script>
