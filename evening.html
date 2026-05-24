@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Свадебное приглашение | Наша премьера</title>
+    <title>Свадебное приглашение | Наша премьера (Банкет)</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -106,7 +106,6 @@
             font-size: 22px;
             font-weight: 500;
             color: #6b3e1c;
-            font-style: italic;
             margin: 12px 0;
         }
 
@@ -124,7 +123,7 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* БИЛЕТ — БОЛЕЕ ГОРИЗОНТАЛЬНЫЙ */
+        /* БИЛЕТ */
         .ticket-container {
             position: fixed;
             top: 0;
@@ -194,14 +193,12 @@
             border-radius: 24px;
         }
 
-        /* УВЕЛИЧИВАЕМ ШИРИНУ ТЕКСТОВОЙ ЧАСТИ */
         .ticket-info {
             flex: 2.5;
             padding: 30px 40px;
             min-width: 320px;
         }
 
-        /* ФОТО ОСТАВЛЯЕМ КАК БЫЛО (УВЕЛИЧЕННОЕ) */
         .ticket-photo {
             flex: 1.2;
             background: #f5ede0;
@@ -255,7 +252,6 @@
             display: block;
         }
 
-        /* ТЕКСТЫ — ШИРЕ И ГОРИЗОНТАЛЬНЕЕ */
         .ticket-header {
             text-align: center;
             border-bottom: 2px solid #e8d8b8;
@@ -295,7 +291,6 @@
             line-height: 1.5;
             color: #4a3520;
             margin: 18px 0;
-            font-style: italic;
         }
 
         .guest-line {
@@ -314,25 +309,19 @@
             transform: translateX(-50%);
         }
 
-        /* СЕТКА РАСПИСАНИЯ — РАСТЯНУТАЯ */
+        /* РАСПИСАНИЕ — ТОЛЬКО БАНКЕТ */
         .schedule-grid {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             gap: 20px;
             margin: 25px 0;
             flex-wrap: wrap;
         }
 
         .schedule-item {
-            flex: 1;
+            flex: 0 1 auto;
             text-align: center;
-            border-left: 1px solid #e8d8b8;
-            padding-left: 15px;
-        }
-
-        .schedule-item:first-child {
-            border-left: none;
-            padding-left: 0;
+            min-width: 200px;
         }
 
         .schedule-time {
@@ -344,9 +333,9 @@
         }
 
         .schedule-event {
-            font-size: 16px;
+            font-size: 20px;
             font-weight: 500;
-            color: #3a2a1a;
+            color: #c49a6c;
         }
 
         .venue {
@@ -370,14 +359,12 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* ТЕКСТ ПРО КИНОФЕСТИВАЛЬ — РАСТЯНУТ ПО ШИРИНЕ */
         .mood-text {
             text-align: center;
             font-size: 15px;
             line-height: 1.55;
             color: #5a4630;
             margin: 20px 0;
-            hyphens: auto;
         }
 
         .dresscode {
@@ -412,10 +399,9 @@
 
         .dresscode-note {
             text-align: center;
-            font-size: 15px;
+            font-size: 12px;
             margin-top: 12px;
             color: #8a6a42;
-
         }
 
         .signature {
@@ -425,7 +411,6 @@
             border-top: 1px solid #e8d8b8;
             font-size: 16px;
             color: #8a6a42;
-            font-style: italic;
         }
 
         .close-ticket {
@@ -509,21 +494,8 @@
                 font-size: 18px;
             }
 
-            .schedule-grid {
-                flex-direction: column;
-                gap: 12px;
-            }
-
             .schedule-item {
-                border-left: none;
-                border-top: 1px solid #e8d8b8;
-                padding-top: 10px;
-                padding-left: 0;
-            }
-
-            .schedule-item:first-child {
-                border-top: none;
-                padding-top: 0;
+                min-width: auto;
             }
 
             .venue-name {
@@ -532,7 +504,6 @@
 
             .mood-text {
                 font-size: 14px;
-                text-align: left;
             }
 
             .dresscode-items {
@@ -581,15 +552,8 @@
                     <div class="schedule-grid">
                         <div class="schedule-item">
                             <div class="schedule-time">ПЯТНИЦА</div>
-                            <div class="schedule-event" id="weddingDate">17 июля 2026</div>
-                        </div>
-                        <div class="schedule-item">
-                            <div class="schedule-time">11:30</div>
-                            <div class="schedule-event">Торжественная регистрация</div>
-                        </div>
-                        <div class="schedule-item">
-                            <div class="schedule-time">16:30</div>
-                            <div class="schedule-event">Праздничный банкет</div>
+                            <div class="schedule-event">17 июля 2026 года в 16:30</div>
+                            <div class="schedule-event">16:30</div>
                         </div>
                     </div>
 
@@ -601,7 +565,7 @@
                     <div class="mood-text">
                         Вы станете не просто гостями торжества, а звездами на нашем личном кинофестивале. 
                         Изысканные блюда, чарующая музыка и атмосфера, пропитанная искренней любовью – все это для вас. 
-                        <br>Добро пожаловать на премьеру нашей истории любви. Мы верим, что она вдохновит на чудеса, 
+                        Добро пожаловать на премьеру нашей истории любви. Мы верим, что она вдохновит на чудеса, 
                         мечты и исполнение самых сокровенных желаний.
                     </div>
 
@@ -639,7 +603,7 @@
     };
 
     document.getElementById('coupleNames').innerText = CONFIG.couple;
-    document.getElementById('weddingDate').innerText = CONFIG.date;
+    document.getElementById('weddingDate') && (document.getElementById('weddingDate').innerText = CONFIG.date);
     document.getElementById('restaurantName').innerText = CONFIG.restaurant;
     document.getElementById('restaurantAddress').innerText = CONFIG.address;
     document.getElementById('signatureBlock').innerHTML = `Алина и Иван`;
